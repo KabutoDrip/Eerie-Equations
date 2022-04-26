@@ -8,9 +8,9 @@ screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
 
-light=pygame.image.load('600px-Radial_Gradient.png') # radial gradient used for light pattern
-bg = pygame.image.load('bg.jpg')
-player = pygame.image.load(os.path.join("600px-Radial_Gradient.png")).convert_alpha(); # load in player image, convert_alpha will keep transparent background
+light=pygame.image.load('yellow_light.png') # radial gradient used for light pattern
+bg = pygame.image.load('yY7suH.png')
+player = pygame.image.load(os.path.join("yellow_light.png")).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
 player = pygame.transform.scale(player, (32, 50)) # resize player
 light=pygame.transform.scale(light, (800,800)) # resize gradient
