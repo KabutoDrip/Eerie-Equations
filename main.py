@@ -10,9 +10,9 @@ screen=pygame.display.set_mode((screenHeight,screenWidth))
 
 light=pygame.image.load('yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('yY7suH.png')
-player = pygame.image.load(os.path.join('yellow_light.png')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
+player = pygame.image.load(os.path.join('torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
-player = pygame.transform.scale(player, (32, 50)) # resize player
+player = pygame.transform.scale(player, (150, 150)) # resize player
 light=pygame.transform.scale(light, (800,800)) # resize gradient
 bg = pygame.transform.scale(bg, (screenHeight,screenWidth))
 
@@ -43,7 +43,7 @@ while True:
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
         filter.fill(pygame.color.Color('Black')) # Black will give dark unlit areas, Grey will give you a fog
-        filter.blit(light,(pos[0]-400,pos[1]-400)) # blit light to the filter surface -400 is to center effect
+        filter.blit(light,(pos[0]-300,pos[1]-300)) # blit light to the filter surface -400 is to center effect
         screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
     screen.blit(player,pos) # blit the player over the effect
