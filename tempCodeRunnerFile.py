@@ -1,1 +1,0 @@
-C:\Users\cammi\AppliedProgramming\GroupProject\MinerMath\assets\
