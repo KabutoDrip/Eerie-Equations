@@ -34,8 +34,11 @@ while True:
         if e.type == pygame.MOUSEBUTTONDOWN:
             night = not night # toggle night between true and false
 
+    pygame.mouse.set_visible(False)
     pos = []
     pos = pygame.mouse.get_pos() # get mouse position
+    torch_pos = pos[0] - 67, pos[1]- 64
+
 
     screen.fill(pygame.color.Color('Black')) # just a background
     screen.blit(bg,(0,0))
@@ -43,8 +46,8 @@ while True:
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
         filter.fill(pygame.color.Color('Black')) # Black will give dark unlit areas, Grey will give you a fog
-        filter.blit(light,(pos[0]-300,pos[1]-300)) # blit light to the filter surface -400 is to center effect
+        filter.blit(light,(pos[0]-367,pos[1]-364)) # blit light to the filter surface -400 is to center effect
         screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
-    screen.blit(player,pos) # blit the player over the effect
+    screen.blit(player,torch_pos) # blit the player over the effect
     pygame.display.flip()
