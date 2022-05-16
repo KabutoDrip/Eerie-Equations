@@ -37,7 +37,7 @@ while True:
     pygame.mouse.set_visible(False)
     pos = []
     pos = pygame.mouse.get_pos() # get mouse position
-    torch_pos = pos[0] - 67, pos[1]- 64
+    torch_pos = pos[0] - 67, pos[1]- 64 # torch_pos is the mouse position shifted over so the torch lines up with mouse correctly
 
 
     screen.fill(pygame.color.Color('Black')) # just a background
