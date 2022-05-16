@@ -8,8 +8,8 @@ screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
 
-light=pygame.image.load('assets\yellow_light.png') # radial gradient used for light pattern
-bg = pygame.image.load('assets\yY7suH.png')
+light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
+bg = pygame.image.load('assets\images\yY7suH.png')
 player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
 player = pygame.transform.scale(player, (150, 150)) # resize player
