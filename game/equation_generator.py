@@ -7,7 +7,7 @@ equation_set1 = [f"{var1} + {var2} = {ans}", f"{var1} - {var2} = {ans}"]
 equation_set2 = [f"{var1} + {var2} - {var3} = {ans}", f"{var1} - {var2} + {var3} = {ans}"]
 equation_set3 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
 equation_set4 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
-equation_set5 = [f"{var1} x {var2} - {var3}", f"{var1} + {var2} - {var3} / {var4}"]
+equation_set5 = [f"{var1} x {var2} - {var3} = {ans}", f"{var1} + {var2} - {var3} / {var4} = {ans}"]
 
 def format_picker (tier):
   if (tier==1):
