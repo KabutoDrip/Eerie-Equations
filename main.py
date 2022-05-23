@@ -10,6 +10,12 @@ screen=pygame.display.set_mode((screenHeight,screenWidth))
 
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\yY7suH.png')
+door_color = ('#773600')
+window_color = ('#9AE0F3')
+door_width = 250
+door_height = 400
+window_width = 150
+window_height = 125
 player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
 player = pygame.transform.scale(player, (150, 150)) # resize player
@@ -42,6 +48,12 @@ while True:
 
     screen.fill(pygame.color.Color('Black')) # just a background
     screen.blit(bg,(0,0))
+    pygame.draw.rect(screen, door_color, pygame.Rect(125, 200, door_width, door_height))
+    pygame.draw.rect(screen, door_color, pygame.Rect(525, 200, door_width, door_height))
+    pygame.draw.rect(screen, door_color, pygame.Rect(925, 200, door_width, door_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect(175, 250, window_width, window_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect(575, 250, window_width, window_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect(975, 250, window_width, window_height))
 
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
