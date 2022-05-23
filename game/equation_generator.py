@@ -14,7 +14,7 @@ def format_picker (tier,var1,var2,var3,var4,ans):
     chosen_equation = random.choice(equation_set1)    #chooses random equation as a formatted string from equations set 1
     return chosen_equation
   elif (tier==2):
-    equation_set2 = [f"{var1} + {var2} - {var3} = {ans}", f"{var1} - {var2} + {var3} = {ans}"]
+    equation_set2 = [f"({var1} + {var2}) - {var3} = {ans}", f"({var1} - {var2}) + {var3} = {ans}"]
     chosen_equation = random.choice(equation_set2)
     return chosen_equation
   elif (tier==3):
@@ -26,7 +26,7 @@ def format_picker (tier,var1,var2,var3,var4,ans):
     chosen_equation = random.choice(equation_set4)
     return chosen_equation
   elif (tier==5):
-    equation_set5 = [f"{var1} x {var2} - {var3} = {ans}", f"{var1} + {var2} - {var3} / {var4} = {ans}"]
+    equation_set5 = [f"({var1} x {var2}) - {var3} = {ans}", f"({var1} + {var2}) - ({var3} / {var4}) = {ans}"]
     chosen_equation = random.choice(equation_set5)
     return chosen_equation
   
