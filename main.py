@@ -1,3 +1,4 @@
+from turtle import width
 import pygame
 import sys
 import os
@@ -7,17 +8,20 @@ user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
-
+print(screenHeight,screenWidth)
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\yY7suH.png')
 door_color = ('#773600')
 window_color = ('#9AE0F3')
-door_width = 250
-door_height = 400
-window_width = 200
-window_height = 150
-box_height = 200
-box_width = 400
+heightScalar = screenWidth/720
+widthScalar = screenHeight/1280
+print(widthScalar)
+door_width = 250*widthScalar  
+door_height = 400*widthScalar
+window_width = 200*widthScalar
+window_height = 150*widthScalar
+box_height = 200*widthScalar
+box_width = 400*widthScalar
 player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
 player = pygame.transform.scale(player, (150, 150)) # resize player
@@ -50,16 +54,16 @@ while True:
 
     screen.fill(pygame.color.Color('Black')) # just a background
     screen.blit(bg,(0,0))
-    pygame.draw.rect(screen, door_color, pygame.Rect(125, 300, door_width, door_height))
-    pygame.draw.rect(screen, door_color, pygame.Rect(525, 300, door_width, door_height))
-    pygame.draw.rect(screen, door_color, pygame.Rect(925, 300, door_width, door_height))
-    pygame.draw.rect(screen, window_color, pygame.Rect(150, 325, window_width, window_height))
-    pygame.draw.rect(screen, window_color, pygame.Rect(550, 325, window_width, window_height))
-    pygame.draw.rect(screen, window_color, pygame.Rect(950, 325, window_width, window_height))
+    pygame.draw.rect(screen, door_color, pygame.Rect((125*widthScalar), (300*heightScalar), door_width, door_height))
+    pygame.draw.rect(screen, door_color, pygame.Rect((525*widthScalar), (300*heightScalar), door_width, door_height))
+    pygame.draw.rect(screen, door_color, pygame.Rect((925*widthScalar), (300*heightScalar), door_width, door_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect((150*widthScalar), (325*heightScalar), window_width, window_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect((550*widthScalar), (325*heightScalar), window_width, window_height))
+    pygame.draw.rect(screen, window_color, pygame.Rect((950*widthScalar), (325*heightScalar), window_width, window_height))
     pygame.draw.rect(screen, '#FFFFFF', pygame.Rect(0, 0, box_width, box_height))
-    pygame.draw.circle(screen,'#FF00FF',(325,550),25)
-    pygame.draw.circle(screen,'#FF00FF',(725,550),25)
-    pygame.draw.circle(screen,'#FF00FF',(1125,550),25)
+    pygame.draw.circle(screen,'#FF00FF',((325*widthScalar),(550*widthScalar)),(25*widthScalar))
+    pygame.draw.circle(screen,'#FF00FF',((725*widthScalar),(550*widthScalar)),(25*widthScalar))
+    pygame.draw.circle(screen,'#FF00FF',((1125*widthScalar),(550*widthScalar)),(25*widthScalar))
 
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
