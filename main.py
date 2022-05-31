@@ -4,11 +4,14 @@ import sys
 import os
 import ctypes
 
+
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
 print(screenHeight,screenWidth)
+
+
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\yY7suH.png')
 door_color = ('#773600')
@@ -64,6 +67,8 @@ while True:
     pygame.draw.circle(screen,'#FF00FF',((325*widthScalar),(550*widthScalar)),(25*widthScalar))
     pygame.draw.circle(screen,'#FF00FF',((725*widthScalar),(550*widthScalar)),(25*widthScalar))
     pygame.draw.circle(screen,'#FF00FF',((1125*widthScalar),(550*widthScalar)),(25*widthScalar))
+
+
 
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
