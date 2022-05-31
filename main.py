@@ -3,10 +3,12 @@ import sys
 import os
 import ctypes
 
+
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
+
 
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\yY7suH.png')
@@ -54,6 +56,8 @@ while True:
     pygame.draw.rect(screen, window_color, pygame.Rect(175, 250, window_width, window_height))
     pygame.draw.rect(screen, window_color, pygame.Rect(575, 250, window_width, window_height))
     pygame.draw.rect(screen, window_color, pygame.Rect(975, 250, window_width, window_height))
+
+
 
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
