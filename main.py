@@ -43,9 +43,10 @@ while True:
 
         #if e.type == pygame.mouse.get_pressed():
                 pos = pygame.mouse.get_pos()
-                print(pos[0])
-                if pos[0] in range(int(100),int(300)):
-                    print("1")
+                if pos[0] in range(int(125*widthScalar),int((125*widthScalar)+(250*widthScalar))):
+                    if pos[1] in range(int(300*widthScalar),int((300*widthScalar)+(400*widthScalar))):
+                        print(1)
+                
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_ESCAPE:
                 pygame.quit()
