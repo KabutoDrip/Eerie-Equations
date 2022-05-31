@@ -1,10 +1,13 @@
+from threading import currentThread
+from tkinter import Button
 from turtle import width
 import pygame
 import sys
 import os
 import ctypes
-
-
+from game import equation_generator
+currentEquation = equation_generator.main()
+print(currentEquation)
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
@@ -31,11 +34,18 @@ player = pygame.transform.scale(player, (150, 150)) # resize player
 light=pygame.transform.scale(light, (800,800)) # resize gradient
 bg = pygame.transform.scale(bg, (screenHeight,screenWidth))
 
-night = True # boolean to set if it is night or day
+night = False # boolean to set if it is night or day
 
 while True:
     
     for e in pygame.event.get():
+        if e.type == pygame.MOUSEBUTTONDOWN:
+
+        #if e.type == pygame.mouse.get_pressed():
+                pos = pygame.mouse.get_pos()
+                print(pos[0])
+                if pos[0] in range(int(100),int(300)):
+                    print("1")
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_ESCAPE:
                 pygame.quit()
@@ -45,9 +55,7 @@ while True:
             pygame.quit()
             sys.exit()
             break
-
-        if e.type == pygame.MOUSEBUTTONDOWN:
-            night = not night # toggle night between true and false
+        
 
     pygame.mouse.set_visible(False)
     pos = []

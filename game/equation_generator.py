@@ -6,7 +6,7 @@ def main():
   tier = 5 #variable pulled from game based off score, affects problem difficulty
   var1,var2,var3,var4 = variable_maker(tier)
   ans = "wot"
-  print(format_picker(tier,var1,var2,var3,var4,ans))
+  return(format_picker(tier,var1,var2,var3,var4,ans))
 
 def format_picker (tier,var1,var2,var3,var4,ans):
   if (tier==1):
@@ -75,4 +75,3 @@ def variable_maker(tier):
     else:
       print("wot")
 
-main()
