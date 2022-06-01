@@ -17,6 +17,9 @@ print(screenHeight,screenWidth)
 
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\yY7suH.png')
+skylight = pygame.image.load('assets\images\images.jpg')
+skylight = pygame.transform.scale(skylight, (700, 250))
+skylight_rect = skylight.get_rect()
 door_color = ('#773600')
 window_color = ('#9AE0F3')
 heightScalar = screenWidth/720
@@ -44,6 +47,9 @@ while True:
                 if pos[0] in range(int(125*widthScalar),int((125*widthScalar)+(250*widthScalar))):
                     if pos[1] in range(int(300*widthScalar),int((300*widthScalar)+(400*widthScalar))):
                         print(1)
+                        skylight = pygame.image.load('assets\images\Cracked-Screen-Wallpaper-HD-download.jpg')
+                        skylight = pygame.transform.scale(skylight, (700, 250))
+                        skylight_rect = skylight.get_rect()
                 elif pos[0] in range(int(525*widthScalar),int((525*widthScalar)+(250*widthScalar))):
                     if pos[1] in range(int(300*widthScalar),int((300*widthScalar)+(400*widthScalar))):
                         print(2)
@@ -76,7 +82,9 @@ while True:
     pygame.draw.rect(screen, window_color, pygame.Rect((150*widthScalar), (325*heightScalar), window_width, window_height))
     pygame.draw.rect(screen, window_color, pygame.Rect((550*widthScalar), (325*heightScalar), window_width, window_height))
     pygame.draw.rect(screen, window_color, pygame.Rect((950*widthScalar), (325*heightScalar), window_width, window_height))
-    pygame.draw.rect(screen, '#FFFFFF', pygame.Rect(0, 0, box_width, box_height))
+
+    screen.blit(skylight, skylight_rect)
+    
     pygame.draw.circle(screen,'#FF00FF',((325*widthScalar),(550*widthScalar)),(25*widthScalar))
     pygame.draw.circle(screen,'#FF00FF',((725*widthScalar),(550*widthScalar)),(25*widthScalar))
     pygame.draw.circle(screen,'#FF00FF',((1125*widthScalar),(550*widthScalar)),(25*widthScalar))
