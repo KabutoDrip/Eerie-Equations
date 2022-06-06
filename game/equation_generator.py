@@ -5,7 +5,7 @@ import random
 def main():
   tier = 5 #variable pulled from game based off score, affects problem difficulty
   var1,var2,var3,var4 = variable_maker(tier)
-  ans = "wot"
+  ans = "?"
   return(format_picker(tier,var1,var2,var3,var4,ans))
 
 def format_picker (tier,var1,var2,var3,var4,ans):
@@ -75,3 +75,12 @@ def variable_maker(tier):
     else:
       print("wot")
 
+def answer():
+  correct_answer=1
+  return correct_answer
+def fake_answer1():
+  f_answer1 = 2
+  return f_answer1
+def fake_answer2():
+  f_answer2 = 3
+  return f_answer2
