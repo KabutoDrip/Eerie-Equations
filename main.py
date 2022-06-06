@@ -82,7 +82,6 @@ while True:
     pygame.draw.circle(screen,'#FF00FF',((1125*widthScalar),(550*widthScalar)),(25*widthScalar))
 
 
-
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
         filter.fill(pygame.color.Color('Black')) # Black will give dark unlit areas, Grey will give you a fog
