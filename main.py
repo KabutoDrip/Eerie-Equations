@@ -7,7 +7,10 @@ import os
 import ctypes
 from game import equation_generator
 currentEquation = equation_generator.main()
-print(currentEquation)
+fakeanswer = equation_generator.fake_answer1()
+fakeanswer2 = equation_generator.fake_answer2()
+answer = equation_generator.answer()
+print(currentEquation,   answer,   fakeanswer,   fakeanswer2)
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
