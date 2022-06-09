@@ -50,7 +50,7 @@ while True:
                 if pos[0] in range(int(125*widthScalar),int((125*widthScalar)+(250*widthScalar))):
                     if pos[1] in range(int(300*widthScalar),int((300*widthScalar)+(400*widthScalar))):
                         print(1)
-                        skylight = pygame.image.load('cracked_window.jpg')
+                        skylight = pygame.image.load('assets/images/cracked_window.jpg')
                         skylight = pygame.transform.scale(skylight, (700, 250))
                         skylight_rect = skylight.get_rect()
                 elif pos[0] in range(int(525*widthScalar),int((525*widthScalar)+(250*widthScalar))):
@@ -103,7 +103,7 @@ while True:
     screen.blit(player,torch_pos) # blit the player over the effect
     pygame.display.flip()
     
-    """def lives_lost(answer):
+    def lives_lost(answer):
         pygame.image('assets/images/cracked_window.jpg')
         if answer == False:
             skylight = pygame.image.load('cracked_window.jpg')
@@ -114,7 +114,7 @@ while True:
         def __init__(self):
             self.lives == 3
             if lives_lost(answer) == True:
-                self.lives = -1"""
+                self.lives = -1
 
 
     
