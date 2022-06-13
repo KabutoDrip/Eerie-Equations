@@ -82,14 +82,9 @@ def variable_maker(tier):
     else:
       print("wot")
 
-def answer():
-  correct_answer=1
-  return correct_answer
-def fake_answer1():
-  f_answer1 = 2
+def fake_answer1(answer):
+  f_answer1 = answer + 2
   return f_answer1
-def fake_answer2():
-  f_answer2 = 3
+def fake_answer2(answer):
+  f_answer2 = answer - 2
   return f_answer2
-
-main()
