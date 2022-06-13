@@ -3,32 +3,37 @@
 import random
 
 def main():
-  tier = 5 #variable pulled from game based off score, affects problem difficulty
+  tier = 1 #variable pulled from game based off score, affects problem difficulty
   var1,var2,var3,var4 = variable_maker(tier)
-  ans = "?"
-  return(format_picker(tier,var1,var2,var3,var4,ans))
+  equation, anwser= (format_picker(tier,var1,var2,var3,var4))
+  return equation, anwser
 
-def format_picker (tier,var1,var2,var3,var4,ans):
+def format_picker (tier,var1,var2,var3,var4):
+  ans = '?'
   if (tier==1):
+    x = random.randint(0,1)
+    if x == 0:
+      ans = var1 + var2
+    else:
+      ans = var1 + var2
     equation_set1 = [f"{var1} + {var2} = {ans}", f"{var1} - {var2} = {ans}"]
-    chosen_equation = random.choice(equation_set1)    #chooses random equation as a formatted string from equations set 1
-    return chosen_equation
+    return equation_set1[x], ans
   elif (tier==2):
     equation_set2 = [f"({var1} + {var2}) - {var3} = {ans}", f"({var1} - {var2}) + {var3} = {ans}"]
     chosen_equation = random.choice(equation_set2)
-    return chosen_equation
+    return chosen_equation, ans
   elif (tier==3):
     equation_set3 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
     chosen_equation = random.choice(equation_set3)
-    return chosen_equation
+    return chosen_equation, ans
   elif (tier==4):
     equation_set4 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
     chosen_equation = random.choice(equation_set4)
-    return chosen_equation
+    return chosen_equation, ans
   elif (tier==5):
     equation_set5 = [f"({var1} x {var2}) - {var3} = {ans}", f"({var1} + {var2}) - ({var3} / {var4}) = {ans}"]
     chosen_equation = random.choice(equation_set5)
-    return chosen_equation
+    return chosen_equation, ans
   
 def variable_maker(tier):
     var1 = 0 
@@ -36,6 +41,7 @@ def variable_maker(tier):
     var3 = 0
     var4 = 0
     if tier == 1:
+      var2 = 1
       #1-10
       while var1 < var2:
         var1 = random.randint(0,10)
@@ -44,6 +50,7 @@ def variable_maker(tier):
         var4 = 0
       return var1,var2,var3,var4
     elif tier == 2:
+      var3 = 1
       #10-100
       while var3 < var2 + var1:
         var1 = random.randint(0,100)
@@ -84,3 +91,5 @@ def fake_answer1():
 def fake_answer2():
   f_answer2 = 3
   return f_answer2
+
+main()
