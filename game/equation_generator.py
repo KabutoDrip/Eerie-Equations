@@ -9,31 +9,84 @@ def main():
   return equation, anwser
 
 def format_picker (tier,var1,var2,var3,var4):
-  ans = '?'
   if (tier==1):
     x = random.randint(0,1)
     if x == 0:
       ans = var1 + var2
     else:
-      ans = var1 + var2
+      ans = var1 - var2
+      while ans < 0:
+        var1 += 1
+        ans = var1 - var2
     equation_set1 = [f"{var1} + {var2} = {ans}", f"{var1} - {var2} = {ans}"]
     return equation_set1[x], ans
   elif (tier==2):
-    equation_set2 = [f"({var1} + {var2}) - {var3} = {ans}", f"({var1} - {var2}) + {var3} = {ans}"]
-    chosen_equation = random.choice(equation_set2)
+    x = random.randint(0,1)
+    ans = -1
+    if x == 0:
+      ans = var1 + var2 - var3
+      while ans < 0:
+        var1 += 1
+        ans = var1 + var2 - var3
+    else:
+      ans = var1 - var2 + var3
+      while ans < 0:
+        var1 += 1
+        ans = var1 - var2 + var3
+    equation_set2 = [f"({var1} + {var2}) - {var3} = {ans}", f"{var1} - ({var2} + {var3}) = {ans}"]
+    chosen_equation = equation_set2[x]
     return chosen_equation, ans
   elif (tier==3):
+    x = random.randint(0,1)
+    ans = 0
+    if x == 0:
+      ans = var1 * var2
+    else:
+      while True:
+        ans = var1 / var2
+        if var1 % var2 == 0:
+          break
+        else:
+          var1 = random.randint(1,50)
+          var2 = random.randint(1,10)
     equation_set3 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
-    chosen_equation = random.choice(equation_set3)
-    return chosen_equation, ans
+    chosen_equation = equation_set3[x]
+    return chosen_equation, int(ans)
   elif (tier==4):
+    x = random.randint(0,1)
+    ans = 0
+    if x == 0:
+      ans = var1 * var2
+    else:
+      while True:
+        ans = var1 / var2
+        if var1 % var2 == 0:
+          break
+        else:
+          var1 = random.randint(1,200)
+          var2 = random.randint(1,100)
     equation_set4 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
-    chosen_equation = random.choice(equation_set4)
-    return chosen_equation, ans
+    chosen_equation = equation_set4[x]
+    return chosen_equation, int(ans)
   elif (tier==5):
+    x = random.randint
+    ans = -1
+    if x == 0:
+      ans = var1 * var2 - var3
+      while ans < 0:
+        var3 = var3 - 1
+        ans = var1 * var2 - var3
+    else:
+      ans = var1 + var2 - var3 / var4
+      while var3 % var4 != 0:
+        var3 = random.randint(1,50)
+        var4 = random.randint(1,50)
+      while ans < 0:
+        var1 += 1
+        ans = var1 + var2 - var3 / var4
     equation_set5 = [f"({var1} x {var2}) - {var3} = {ans}", f"({var1} + {var2}) - ({var3} / {var4}) = {ans}"]
-    chosen_equation = random.choice(equation_set5)
-    return chosen_equation, ans
+    chosen_equation = equation_set5[x]
+    return chosen_equation, int(ans)
   
 def variable_maker(tier):
     var1 = 0 
