@@ -94,6 +94,51 @@ while True:
 
 
 
+    ############################################################################################
+    # Joseph: Display Current Equation.
+    #
+    # Notes: For some reason, it sees 'render' with no attribute. That might be the only issue
+    #        at the moment.
+    ############################################################################################
+    # Added black variable (color of text?).
+    pygame.init()
+
+    # This is the RGB value for the colors.
+    white = (255, 255, 255)
+    black = (0, 0, 0)
+
+    # Assign values to x and y
+    x = 400
+    y = 400
+
+    # Create the display surface object of the specific dimention.
+    display_surface = pygame.display.set_mode((x, y))
+
+    # Added variable for the text style (text through GUI).
+    font = pygame.font.Font("freesansbold.ttf", 20) # ("font", text size)
+
+    # Create a text surface object, on which text is drawn on it.
+    text = pygame.font.render(currentEquation, True, black, white)
+
+    # Create a rectangular object for the text surface object.
+    textRect = text.get_rect()
+
+    # Set the center of the rectangular object.
+    textRect.center = (x // 2, y // 2)
+
+    while True:
+
+        # Pass a string to myFond.render.
+        display_equation = font.render(str(currentEquation), True, white)
+
+        # Make screen blit funcitons to run things above.
+        #screen.blit(display_equation, (500, 10))
+        display_surface.blit(text, textRect)
+
+    ############################################################################################
+
+
+
     if night: # if light effect needed
         filter = pygame.surface.Surface((screenHeight, screenWidth)) # create surface same size as window
         filter.fill(pygame.color.Color('Black')) # Black will give dark unlit areas, Grey will give you a fog
