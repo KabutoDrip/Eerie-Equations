@@ -99,7 +99,7 @@ while True:
     # Notes: For some reason, it sees 'render' with no attribute. That might be the only issue
     #        at the moment.
     ############################################################################################
-    # Added black variable (color of text?).
+    # # Added black variable (color of text?).
     pygame.init()
 
     # This is the RGB value for the colors.
@@ -117,7 +117,8 @@ while True:
     font = pygame.font.Font("freesansbold.ttf", 20) # ("font", text size)
 
     # Create a text surface object, on which text is drawn on it.
-    text = pygame.font.render(currentEquation, True, black, white)
+    # it was...text = pygame.font.render(currentEquation, True, black, white)
+    text = font.render(currentEquation, True, black, white)
 
     # Create a rectangular object for the text surface object.
     textRect = text.get_rect()
@@ -125,16 +126,26 @@ while True:
     # Set the center of the rectangular object.
     textRect.center = (x // 2, y // 2)
 
-    while True:
+    # Pass a string to myFond.render.
+    display_equation = font.render(str(currentEquation), True, white)
 
-        # Pass a string to myFond.render.
-        display_equation = font.render(str(currentEquation), True, white)
+    # Make screen blit funcitons to run things above.
+    #screen.blit(display_equation, (500, 10))
+    display_surface.blit(text, textRect)
 
-        # Make screen blit funcitons to run things above.
-        #screen.blit(display_equation, (500, 10))
-        display_surface.blit(text, textRect)
+    # pygame.display.update()
 
-    ############################################################################################
+    # Commented out for now.
+    # while True:
+
+    #     # Pass a string to myFond.render.
+    #     display_equation = font.render(str(currentEquation), True, white)
+
+    #     # Make screen blit funcitons to run things above.
+    #     #screen.blit(display_equation, (500, 10))
+    #     display_surface.blit(text, textRect)
+
+    # ############################################################################################
 
 
 
