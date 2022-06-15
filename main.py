@@ -6,10 +6,9 @@ import sys
 import os
 import ctypes
 from game import equation_generator
-currentEquation = equation_generator.main()
-fakeanswer = equation_generator.fake_answer1()
-fakeanswer2 = equation_generator.fake_answer2()
-answer = equation_generator.answer()
+currentEquation, answer = equation_generator.main()
+fakeanswer = equation_generator.fake_answer1(answer)
+fakeanswer2 = equation_generator.fake_answer2(answer)
 print(currentEquation,   answer,   fakeanswer,   fakeanswer2)
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
