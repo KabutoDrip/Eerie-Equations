@@ -106,12 +106,7 @@ while True:
     white = (255, 255, 255)
     black = (0, 0, 0)
 
-    # Assign values to x and y
-    x = 400
-    y = 400
-
     # Create the display surface object of the specific dimention.
-    display_surface = pygame.display.set_mode((x, y))
 
     # Added variable for the text style (text through GUI).
     font = pygame.font.Font("freesansbold.ttf", 20) # ("font", text size)
@@ -124,14 +119,14 @@ while True:
     textRect = text.get_rect()
 
     # Set the center of the rectangular object.
-    textRect.center = (x // 2, y // 2)
+    textRect.center = (screenHeight // 2, screenWidth // 2)
 
     # Pass a string to myFond.render.
     display_equation = font.render(str(currentEquation), True, white)
 
     # Make screen blit funcitons to run things above.
-    #screen.blit(display_equation, (500, 10))
-    display_surface.blit(text, textRect)
+    screen.blit(display_equation, (500, 10))
+    screen.blit(text, textRect)
 
     # pygame.display.update()
 
