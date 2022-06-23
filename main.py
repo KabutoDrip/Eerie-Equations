@@ -126,7 +126,7 @@ while True:
 
     # Make screen blit funcitons to run things above.
     screen.blit(display_equation, (500, 10))
-    screen.blit(text, textRect)
+    # screen.blit(text, textRect)
 
     # pygame.display.update()
 
