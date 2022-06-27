@@ -106,7 +106,7 @@ while True:
     # This is the RGB value for the colors.
     white = (255, 255, 255)
     black = (0, 0, 0)
-
+    red = (34,16,13)
     # Create the display surface object of the specific dimention.
 
     # Added variable for the text style (text through GUI).
@@ -121,7 +121,7 @@ while True:
     textRect = text.get_rect()
 
     # Pass a string to myFond.render.
-    display_equation = font.render(str(currentEquation), True, white)
+    display_equation = font.render(str(currentEquation), True, red)
     display_correct_answer = font.render(str(answer), True, white)
 
     # Make screen blit funcitons to run things above.
