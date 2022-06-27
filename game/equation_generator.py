@@ -136,8 +136,16 @@ def variable_maker(tier):
       print("wot")
 
 def fake_answer1(answer):
-  f_answer1 = answer + 2
+  f_answer1 = answer + random.randint(-10,10)
   return f_answer1
-def fake_answer2(answer):
-  f_answer2 = answer - 2
-  return f_answer2
+def fake_answer2(answer, prev=False):
+  if prev == False:
+    return answer + random.randint(-10,10)
+  else:
+    f_answer = answer + random.randint(-10,10)
+    while f_answer == prev:
+      f_answer = answer + random.randint(-10,10)
+
+    return f_answer
+
+   
