@@ -115,14 +115,17 @@ while True:
     # it was...text = pygame.font.render(currentEquation, True, black, white)
     text = font.render(currentEquation, True, black, white)
 
+
     # Create a rectangular object for the text surface object.
     textRect = text.get_rect()
 
     # Pass a string to myFond.render.
     display_equation = font.render(str(currentEquation), True, white)
+    display_correct_answer = font.render(str(answer), True, white)
 
     # Make screen blit funcitons to run things above.
     screen.blit(display_equation, (500, 275))
+    screen.blit(display_correct_answer, (300, 200))
    
 
     # pygame.display.update()
