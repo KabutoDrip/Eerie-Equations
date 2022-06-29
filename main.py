@@ -5,6 +5,7 @@ import pygame
 import sys
 import os
 import ctypes
+import random
 from game import equation_generator
 currentEquation, answer = equation_generator.main()
 fakeanswer = equation_generator.fake_answer1(answer)
@@ -15,7 +16,8 @@ screenHeight = user32.GetSystemMetrics(0)
 screenWidth = user32.GetSystemMetrics(1)
 screen=pygame.display.set_mode((screenHeight,screenWidth))
 print(screenHeight,screenWidth)
-
+ANSWER_LIST = [answer, fakeanswer, fakeanswer2]
+print(ANSWER_LIST)
 
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\hall.png')
@@ -46,6 +48,7 @@ while True:
     for e in pygame.event.get():
         if e.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
+                print(pos)
                 if pos[0] in range(int(125*widthScalar),int((125*widthScalar)+(250*widthScalar))):
                     if pos[1] in range(int(300*widthScalar),int((300*widthScalar)+(400*widthScalar))):
                         print(1)
@@ -70,10 +73,10 @@ while True:
             break
         
 
-    pygame.mouse.set_visible(False)
+    pygame.mouse.set_visible(True)
     pos = []
     pos = pygame.mouse.get_pos() # get mouse position
-    torch_pos = pos[0] - 67, pos[1]- 64 # torch_pos is the mouse position shifted over so the torch lines up with mouse correctly
+    #torch_pos = pos[0] - 67, pos[1]- 64 # torch_pos is the mouse position shifted over so the torch lines up with mouse correctly
 
 
     screen.fill(pygame.color.Color('Black')) # just a background
@@ -105,11 +108,11 @@ while True:
     # This is the RGB value for the colors.
     white = (255, 255, 255)
     black = (0, 0, 0)
-
+    red = (153,19,9)
     # Create the display surface object of the specific dimention.
 
     # Added variable for the text style (text through GUI).
-    font = pygame.font.Font("freesansbold.ttf", 100) # ("font", text size)
+    font = pygame.font.Font("assets/fonts/BloodLust.ttf", 50) # ("font", text size)
 
     # Create a text surface object, on which text is drawn on it.
     # it was...text = pygame.font.render(currentEquation, True, black, white)
@@ -120,12 +123,16 @@ while True:
     textRect = text.get_rect()
 
     # Pass a string to myFond.render.
-    display_equation = font.render(str(currentEquation), True, white)
-    display_correct_answer = font.render(str(answer), True, white)
+    display_equation = font.render(str(currentEquation), True, red)
+    x = display_correct_answer = font.render(str(answer), True, red)
+    y = display_fake_answer_one = font.render(str(fakeanswer), True, red)
+    z = display_fake_answer_two = font.render(str(fakeanswer2), True, red)
 
     # Make screen blit funcitons to run things above.
-    screen.blit(display_equation, (500, 275))
-    screen.blit(display_correct_answer, (300, 200))
+    screen.blit(display_equation, (600, 150))
+    screen.blit(x, (245, 425))
+    screen.blit(y, (1075, 420))
+    screen.blit(z, (675, 300))
    
 
     # pygame.display.update()
@@ -151,7 +158,7 @@ while True:
         filter.blit(light,(screenHeight/2,screenWidth/2))
         screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
-    screen.blit(player,torch_pos) # blit the player over the effect
+    #screen.blit(player,torch_pos) # blit the player over the effect
     pygame.display.flip()
     
     def lives_lost(answer):

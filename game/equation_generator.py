@@ -18,7 +18,7 @@ def format_picker (tier,var1,var2,var3,var4):
       while ans < 0:
         var1 += 1
         ans = var1 - var2
-    equation_set1 = [f"{var1} + {var2} = {ans}", f"{var1} - {var2} = {ans}"]
+    equation_set1 = [f"{var1} + {var2} =", f"{var1} - {var2} ="]
     return equation_set1[x], ans
   elif (tier==2):
     x = random.randint(0,1)
@@ -33,7 +33,7 @@ def format_picker (tier,var1,var2,var3,var4):
       while ans < 0:
         var1 += 1
         ans = var1 - var2 + var3
-    equation_set2 = [f"({var1} + {var2}) - {var3} = {ans}", f"{var1} - ({var2} + {var3}) = {ans}"]
+    equation_set2 = [f"({var1} + {var2}) - {var3} =", f"{var1} - ({var2} + {var3}) ="]
     chosen_equation = equation_set2[x]
     return chosen_equation, ans
   elif (tier==3):
@@ -49,7 +49,7 @@ def format_picker (tier,var1,var2,var3,var4):
         else:
           var1 = random.randint(1,50)
           var2 = random.randint(1,10)
-    equation_set3 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
+    equation_set3 = [f"{var1} x {var2} =", f"{var1} / {var2} ="]
     chosen_equation = equation_set3[x]
     return chosen_equation, int(ans)
   elif (tier==4):
@@ -65,7 +65,7 @@ def format_picker (tier,var1,var2,var3,var4):
         else:
           var1 = random.randint(1,200)
           var2 = random.randint(1,100)
-    equation_set4 = [f"{var1} x {var2} = {ans}", f"{var1} / {var2} = {ans}"]
+    equation_set4 = [f"{var1} x {var2} =", f"{var1} / {var2} ="]
     chosen_equation = equation_set4[x]
     return chosen_equation, int(ans)
   elif (tier==5):
@@ -136,8 +136,16 @@ def variable_maker(tier):
       print("wot")
 
 def fake_answer1(answer):
-  f_answer1 = answer + 2
+  f_answer1 = answer + random.randint(-10,10)
   return f_answer1
-def fake_answer2(answer):
-  f_answer2 = answer - 2
-  return f_answer2
+def fake_answer2(answer, prev=False):
+  if prev == False:
+    return answer + random.randint(-10,10)
+  else:
+    f_answer = answer + random.randint(-10,10)
+    while f_answer == prev:
+      f_answer = answer + random.randint(-10,10)
+
+    return f_answer
+
+   
