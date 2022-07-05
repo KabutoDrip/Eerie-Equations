@@ -138,9 +138,11 @@ def variable_maker(tier):
 def fake_answer1(answer):
   negative = random.choice([True, False])
 
-  f_answer1 = answer + random.randint(1,10)
+  add =  random.randint(1,10)
+
   if negative:
-    f_answer1 *= -1
+    add *= -1
+  f_answer1 = answer + add
   return f_answer1
 def fake_answer2(answer, prev=False):
   if prev == False:
@@ -149,7 +151,7 @@ def fake_answer2(answer, prev=False):
     f_answer = fake_answer1(answer)
     while f_answer == prev:
       f_answer = fake_answer1(answer)
-      
+
     return f_answer
 
    
