@@ -9,7 +9,7 @@ import random
 from game import equation_generator
 currentEquation, answer = equation_generator.main()
 fakeanswer = equation_generator.fake_answer1(answer)
-fakeanswer2 = equation_generator.fake_answer2(answer)
+fakeanswer2 = equation_generator.fake_answer2(answer, fakeanswer)
 print(currentEquation,   answer,   fakeanswer,   fakeanswer2)
 user32 = ctypes.windll.user32
 screenHeight = user32.GetSystemMetrics(0)
@@ -142,7 +142,6 @@ while True:
     screen.blit(z, (675, 300))
 
    
-
 
     # pygame.display.update()
 
