@@ -19,6 +19,8 @@ print(screenHeight,screenWidth)
 ANSWER_LIST = [answer, fakeanswer, fakeanswer2]
 print(ANSWER_LIST)
 
+from pygame import mixer # For playing the music/sounds.
+
 light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
 bg = pygame.image.load('assets\images\hall.png')
 skylight = pygame.image.load('assets\images\images.jpg')
@@ -42,6 +44,11 @@ light=pygame.transform.scale(light, (800,800)) # resize gradient
 bg = pygame.transform.scale(bg, (screenHeight,screenWidth))
 
 night = True # boolean to set if it is night or day
+
+# This will allow the mixer library to run the music for the game from the assets/music file.
+mixer.init()
+mixer.music.load('assets/music/scary_music.mp3')
+mixer.music.play()
 
 while True:
     
@@ -133,19 +140,6 @@ while True:
     screen.blit(x, (245, 425))
     screen.blit(y, (1075, 420))
     screen.blit(z, (675, 300))
-   
-
-    # pygame.display.update()
-
-    # Commented out for now.
-    # while True:
-
-    #     # Pass a string to myFond.render.
-    #     display_equation = font.render(str(currentEquation), True, white)
-
-    #     # Make screen blit funcitons to run things above.
-    #     #screen.blit(display_equation, (500, 10))
-    #     display_surface.blit(text, textRect)
 
     # ############################################################################################
 
