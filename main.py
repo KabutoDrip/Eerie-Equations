@@ -141,6 +141,22 @@ while True:
     screen.blit(y, (1075, 420))
     screen.blit(z, (675, 300))
 
+   
+
+
+    # pygame.display.update()
+
+    # Commented out for now.
+    # while True:
+
+    #     # Pass a string to myFond.render.
+    #     display_equation = font.render(str(currentEquation), True, white)
+
+    #     # Make screen blit funcitons to run things above.
+    #     #screen.blit(display_equation, (500, 10))
+    #     display_surface.blit(text, textRect)
+
+
     # ############################################################################################
 
 
