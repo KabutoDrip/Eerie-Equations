@@ -68,6 +68,8 @@ class Game():
         self.z = self.font.render(str(self.fakeanswer2), True, self.red)
 
         loop = True
+        selected = 0
+        correct_position = 1
         while loop == True:
             for e in pygame.event.get():
                 if e.type == pygame.MOUSEBUTTONDOWN:
@@ -76,19 +78,18 @@ class Game():
                     if pos[0] in range(int(200*self.widthScalar),int((315*self.widthScalar))):
                         if pos[1] in range(int(200*self.widthScalar),int((525*self.widthScalar))):
                             print(1)
-                            loop = False
-                            self.game_loop()
+                            selected = 1
                     elif pos[0] in range(int(580*self.widthScalar),int((715*self.widthScalar))):
                         if pos[1] in range(int(160*self.widthScalar),int((370*self.widthScalar))):
                             print(2)
-                            loop = False
-                            self.game_loop()
+                            selected = 2
                     elif pos[0] in range(int(970*self.widthScalar),int((1100*self.widthScalar))):
                         if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
-                            loop = False
-                            self.game_loop()
-                    
+                            selected = 3
+                    if selected == correct_position:
+                        loop = False
+                        self.game_loop()
                 if e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_ESCAPE:
                         pygame.quit()
