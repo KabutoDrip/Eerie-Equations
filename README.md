@@ -29,7 +29,6 @@ Tyler Sparks, James Rigby, Camden Miller, Joseph Miller, Gabe Morring,
 * [W3 Schools](https://w3schools.com)
 
 # Future Work
-
 {Make a list of things that you need to fix, improve, and add in the future.}
 * Item 1
 * Item 2
