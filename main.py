@@ -11,24 +11,18 @@ from game import equation_generator
 class Game():
     def __init__(self):
 
-        self.currentEquation, self.answer = equation_generator.main()
-        self.fakeanswer = equation_generator.fake_answer1(self.answer)
-        self.fakeanswer2 = equation_generator.fake_answer2(self.answer)
-        print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
+        
+        #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
         self.user32 = ctypes.windll.user32
         self.screenHeight = self.user32.GetSystemMetrics(0)
         self.screenWidth = self.user32.GetSystemMetrics(1)
         self.screen=pygame.display.set_mode((self.screenHeight,self.screenWidth))
-        #print(screenHeight,screenWidth)
-        #ANSWER_LIST = [answer, fakeanswer, fakeanswer2]
-        #print(ANSWER_LIST)
-
-       
+        
+        # ANSWER_LIST = [self.answer, self.fakeanswer, self.fakeanswer2]
 
 
         self.light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
         self.bg = pygame.image.load('assets\images\hall.png')
-        #self.skylight = pygame.image.load('assets\images\images.jpg')
         
      
         self.heightScalar = self.screenWidth/720
@@ -53,7 +47,13 @@ class Game():
         # Added variable for the text style (text through GUI).
         self.font = pygame.font.Font("assets/fonts/BloodLust.ttf", 50) # ("font", text size)
 
-        # Create a text surface object, on which text is drawn on it.
+
+    def game_loop(self):
+        self.currentEquation, self.answer = equation_generator.main()
+        self.fakeanswer = equation_generator.fake_answer1(self.answer)
+        self.fakeanswer2 = equation_generator.fake_answer2(self.answer)
+
+         # Create a text surface object, on which text is drawn on it.
         # it was...text = pygame.font.render(currentEquation, True, black, white)
         self.text = self.font.render(self.currentEquation, True, self.black, self.white)
 
@@ -67,17 +67,8 @@ class Game():
         self.y = self.font.render(str(self.fakeanswer), True, self.red)
         self.z = self.font.render(str(self.fakeanswer2), True, self.red)
 
-        # Make screen blit funcitons to run things above.
-        
-        
-        print("???")
-
-    def game_loop(self):
-        print("What is happening?")
         loop = True
         while loop == True:
-            
-            #print("Hi mom!")
             for e in pygame.event.get():
                 if e.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
@@ -98,19 +89,20 @@ class Game():
                             loop = False
                             self.game_loop()
                     
-            if e.type == pygame.KEYDOWN:
-                if e.key == pygame.K_ESCAPE:
+                if e.type == pygame.KEYDOWN:
+                    if e.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        sys.exit
+                        break
+                if e.type == pygame.QUIT: 
                     pygame.quit()
-                    sys.exit
+                    sys.exit()
                     break
-            if e.type == pygame.QUIT: 
-                pygame.quit()
-                sys.exit()
-                break
-            pygame.mouse.set_visible(True)
-            self.pos = []
-            self.pos = pygame.mouse.get_pos() # get mouse position
+                pygame.mouse.set_visible(True)
+                self.pos = []
+                self.pos = pygame.mouse.get_pos() # get mouse position
 
+        # Make screen blit funcitons to run things above.
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
 
@@ -134,17 +126,11 @@ class Game():
     #pygame.display.flip()
     
     # def lives_lost(answer):
-    #     pygame.image('assets/images/cracked_window.jpg')
     #     if answer == False:
-    #         skylight = pygame.image.load('cracked_window.jpg')
-    #         skylight = pygame.transform.scale(skylight, (700, 250))
             
-    # class Player():
+class Player():
+    pass
 
-    #     def __init__(self):
-    #         self.lives == 3
-    #         if self.lives_lost(self.answer) == True:
-    #             self.lives = -1
 def main():
     game = Game()
     game.game_loop()
