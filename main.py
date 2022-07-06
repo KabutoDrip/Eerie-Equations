@@ -82,7 +82,11 @@ class Game():
         loop = True
         selected = 0
         correct_position = 1
+        lives = 2
+        chosen = set()
+
         while loop == True:
+
             for e in pygame.event.get():
                 if e.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
@@ -99,9 +103,22 @@ class Game():
                         if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
                             selected = 3
+                    else:
+                        selected = 0
                     if selected == correct_position:
                         loop = False
                         self.game_loop()
+                    elif selected != 0:
+                        if selected != correct_position:
+                            if selected not in chosen:
+                                chosen.add(selected)
+                                lives -= 1
+                            else:
+                                pass
+                        if lives == 0:
+                            loop = False
+                            self.game_loop()
+
                 if e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_ESCAPE:
                         pygame.quit()
