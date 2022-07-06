@@ -73,18 +73,18 @@ class Game():
                 if e.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
                     print(pos)
-                    if pos[0] in range(int(125*self.widthScalar),int((125*self.widthScalar)+(250*self.widthScalar))):
-                        if pos[1] in range(int(300*self.widthScalar),int((300*self.widthScalar)+(400*self.widthScalar))):
+                    if pos[0] in range(int(200*self.widthScalar),int((315*self.widthScalar))):
+                        if pos[1] in range(int(200*self.widthScalar),int((525*self.widthScalar))):
                             print(1)
                             loop = False
                             self.game_loop()
-                    elif pos[0] in range(int(525*self.widthScalar),int((525*self.widthScalar)+(250*self.widthScalar))):
-                        if pos[1] in range(int(300*self.widthScalar),int((300*self.widthScalar)+(400*self.widthScalar))):
+                    elif pos[0] in range(int(580*self.widthScalar),int((715*self.widthScalar))):
+                        if pos[1] in range(int(160*self.widthScalar),int((370*self.widthScalar))):
                             print(2)
                             loop = False
                             self.game_loop()
-                    elif pos[0] in range(int(925*self.widthScalar),int((925*self.widthScalar)+(250*self.widthScalar))):
-                        if pos[1] in range(int(300*self.widthScalar),int((300*self.widthScalar)+(400*self.widthScalar))):
+                    elif pos[0] in range(int(970*self.widthScalar),int((1100*self.widthScalar))):
+                        if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
                             loop = False
                             self.game_loop()
