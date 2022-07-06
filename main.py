@@ -8,9 +8,20 @@ import ctypes
 import random
 from game import equation_generator
 
+# Adds the music library from pygame.
+from pygame import mixer
+
+# mixer.init()
+# mixer.music.load('assets/music/scary_music.mp3')
+# mixer.music.play()
+
 class Game():
     def __init__(self):
 
+        # Calls the music file and plays during the game.
+        mixer.init()
+        mixer.music.load('assets/music/scary_music.mp3')
+        mixer.music.play()
         
         #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
         self.user32 = ctypes.windll.user32
@@ -49,6 +60,7 @@ class Game():
 
 
     def game_loop(self):
+
         self.currentEquation, self.answer = equation_generator.main()
         self.fakeanswer = equation_generator.fake_answer1(self.answer)
         self.fakeanswer2 = equation_generator.fake_answer2(self.answer)
