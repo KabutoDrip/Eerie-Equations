@@ -11,9 +11,7 @@ from game import equation_generator
 # Adds the music library from pygame.
 from pygame import mixer
 
-# mixer.init()
-# mixer.music.load('assets/music/scary_music.mp3')
-# mixer.music.play()
+
 
 class Game():
     def __init__(self):
@@ -34,8 +32,9 @@ class Game():
 
         self.light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
         self.bg = pygame.image.load('assets\images\hall.png')
-        
+        #self.flashlight = pygame.image.load('assets\images\flashlight.png') #flashlight sprite at bottom of screen
      
+    
         self.heightScalar = self.screenWidth/720
         self.widthScalar = self.screenHeight/1280
        
@@ -138,8 +137,8 @@ class Game():
 
             self.screen.blit(self.display_equation, (600, 150))
             self.screen.blit(self.x, (245 * self.widthScalar, 400 * self.heightScalar))
-            self.screen.blit(self.y, (1075 * self.widthScalar, 420 * self.heightScalar))
-            self.screen.blit(self.z, (675 * self.widthScalar, 300 * self.heightScalar))
+            self.screen.blit(self.y, (1000 * self.widthScalar, 400 * self.heightScalar))
+            self.screen.blit(self.z, (625 * self.widthScalar, 300 * self.heightScalar))
         
 
             if self.night: # if light effect needed
