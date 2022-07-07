@@ -18,7 +18,7 @@ class Game():
 
         # Calls the music file and plays during the game.
         mixer.init()
-        mixer.music.load('assets/music/scary_music.mp3')
+        mixer.music.load('assets/music/Scary_Music_1.mp3')
         mixer.music.play()
         
         #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
