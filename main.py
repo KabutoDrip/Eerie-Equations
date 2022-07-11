@@ -92,6 +92,7 @@ class Game():
             self.y = self.font.render(str(self.fakeanswer2), True, self.red)
             self.z = self.font.render(str(self.answer), True, self.red)
 
+        self.scored = self.font.render("Score: " + str(self.score), True, self.red)
         loop = True
         selected = 0
         lives = 2
@@ -109,25 +110,17 @@ class Game():
                     if pos[0] in range(int(200*self.widthScalar),int((315*self.widthScalar))):
                         if pos[1] in range(int(200*self.widthScalar),int((525*self.widthScalar))):
                             print(1)
-
-                            # Newly Added for the "correct" door.
-
                             selected = 1
 
                     elif pos[0] in range(int(580*self.widthScalar),int((715*self.widthScalar))):
                         if pos[1] in range(int(160*self.widthScalar),int((370*self.widthScalar))):
                             print(2)
-
-                            # Newly Added for the "wrong" door.
-
                             selected = 2
 
                     elif pos[0] in range(int(970*self.widthScalar),int((1100*self.widthScalar))):
                         if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
 
-                            # Newly Added for the "wrong" door.
-                            
                             selected = 3
                     else:
                         selected = 0
@@ -180,6 +173,7 @@ class Game():
             self.screen.blit(self.x, (245 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.y, (1000 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.z, (625 * self.widthScalar, 300 * self.heightScalar))
+            self.screen.blit(self.scored, (800 * self.widthScalar, 500 * self.heightScalar))
         
 
             if self.night: # if light effect needed
