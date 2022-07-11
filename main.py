@@ -96,14 +96,11 @@ class Game():
         selected = 0
         lives = 2
         chosen = set()
-<<<<<<< HEAD
-=======
 
         # Created variables for the correct and wrong answers when selecting a door.
         correct_sound = pygame.mixer.Sound("assets/music/Correct_Answer.mp3")
         wrong_sound = pygame.mixer.Sound("assets/music/Wrong_Answer.mp3")
 
->>>>>>> a3b0359def4c7c26b863cda5e10e18e0d3162bf6
         while loop == True:
 
             for e in pygame.event.get():
@@ -114,7 +111,6 @@ class Game():
                             print(1)
 
                             # Newly Added for the "correct" door.
-                            pygame.mixer.Sound.play(correct_sound)
 
                             selected = 1
 
@@ -123,7 +119,6 @@ class Game():
                             print(2)
 
                             # Newly Added for the "wrong" door.
-                            pygame.mixer.Sound.play(wrong_sound)
 
                             selected = 2
 
@@ -132,7 +127,6 @@ class Game():
                             print(3)
 
                             # Newly Added for the "wrong" door.
-                            pygame.mixer.Sound.play(wrong_sound)
                             
                             selected = 3
                     else:
@@ -141,6 +135,8 @@ class Game():
                         if len(chosen) == 0:
                             self.score += 100
                             print(self.score)
+                            pygame.mixer.Sound.play(correct_sound)
+
 
                         elif len(chosen) == 1:
                             self.score += 50
@@ -152,6 +148,8 @@ class Game():
 
                     elif selected != 0:
                         if selected != correct_position:
+                            pygame.mixer.Sound.play(wrong_sound)
+
                             if selected not in chosen:
                                 chosen.add(selected)
                                 lives -= 1
