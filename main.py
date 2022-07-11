@@ -18,7 +18,7 @@ class Game():
 
         # Calls the music file and plays during the game.
         mixer.init()
-        mixer.music.load('assets/music/scary_music.mp3')
+        mixer.music.load('assets/music/Scary_Music_1.mp3')
         mixer.music.play()
         
         #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
@@ -96,6 +96,14 @@ class Game():
         selected = 0
         lives = 2
         chosen = set()
+<<<<<<< HEAD
+=======
+
+        # Created variables for the correct and wrong answers when selecting a door.
+        correct_sound = pygame.mixer.Sound("assets/music/Correct_Answer.mp3")
+        wrong_sound = pygame.mixer.Sound("assets/music/Wrong_Answer.mp3")
+
+>>>>>>> a3b0359def4c7c26b863cda5e10e18e0d3162bf6
         while loop == True:
 
             for e in pygame.event.get():
@@ -104,14 +112,28 @@ class Game():
                     if pos[0] in range(int(200*self.widthScalar),int((315*self.widthScalar))):
                         if pos[1] in range(int(200*self.widthScalar),int((525*self.widthScalar))):
                             print(1)
+
+                            # Newly Added for the "correct" door.
+                            pygame.mixer.Sound.play(correct_sound)
+
                             selected = 1
+
                     elif pos[0] in range(int(580*self.widthScalar),int((715*self.widthScalar))):
                         if pos[1] in range(int(160*self.widthScalar),int((370*self.widthScalar))):
                             print(2)
+
+                            # Newly Added for the "wrong" door.
+                            pygame.mixer.Sound.play(wrong_sound)
+
                             selected = 2
+
                     elif pos[0] in range(int(970*self.widthScalar),int((1100*self.widthScalar))):
                         if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
+
+                            # Newly Added for the "wrong" door.
+                            pygame.mixer.Sound.play(wrong_sound)
+                            
                             selected = 3
                     else:
                         selected = 0
