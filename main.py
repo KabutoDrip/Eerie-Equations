@@ -30,7 +30,8 @@ class Game():
         # ANSWER_LIST = [self.answer, self.fakeanswer, self.fakeanswer2]
 
 
-        self.light=pygame.image.load('assets\images\yellow_light.png') # radial gradient used for light pattern
+        self.light=pygame.image.load('assets\images\white.png') # radial gradient used for light pattern
+        self.candlelight = pygame.image.load('assets\images\yellow_light.png')
         self.bg = pygame.image.load('assets\images\hall.png')
         #self.flashlight = pygame.image.load('assets\images\flashlight.png') #flashlight sprite at bottom of screen
      
@@ -42,9 +43,10 @@ class Game():
 
         self.player = pygame.transform.scale(self.player, (150, 150)) # resize player
         self.light=pygame.transform.scale(self.light, (800,800)) # resize gradient
+        self.candlelight=pygame.transform.scale(self.candlelight, (500,500))
         self.bg = pygame.transform.scale(self.bg, (self.screenHeight,self.screenWidth))
 
-        self.night = False # boolean to set if it is night or day
+        self.night = True # boolean to set if it is night or day
 
         
         pygame.init()
@@ -95,7 +97,7 @@ class Game():
         self.scored = self.font.render("Score: " + str(self.score), True, self.red)
         loop = True
         selected = 0
-        lives = 2
+        guesses = 2
         chosen = set()
 
         # Created variables for the correct and wrong answers when selecting a door.
@@ -145,11 +147,11 @@ class Game():
 
                             if selected not in chosen:
                                 chosen.add(selected)
-                                lives -= 1
+                                guesses -= 1
                             else:
                                 chosen.add(selected)
                                 pass
-                        if lives == 0:
+                        if guesses == 0:
                             loop = False
                             self.game_loop()
 
@@ -179,8 +181,10 @@ class Game():
             if self.night: # if light effect needed
                 filter = pygame.surface.Surface((self.screenHeight, self.screenWidth)) # create surface same size as window
                 filter.fill(pygame.color.Color('Black')) # Black will give dark unlit areas, Grey will give you a fog
-                filter.blit(self.light,(pos[0]-367,pos[1]-364)) # blit light to the filter surface -400 is to center effect
-                filter.blit(self.light,(self.screenHeight/2,self.screenWidth/2))
+                filter.blit(self.light,(380 * self.widthScalar, -100 * self.heightScalar))
+                filter.blit(self.candlelight,(600 * self.widthScalar, 160* self.heightScalar))
+                filter.blit(self.candlelight,(640 * self.widthScalar, 160* self.heightScalar))
+                filter.blit(self.light,(self.pos[0]-367,self.pos[1]-364)) # blit light to the filter surface -400 is to center effect
                 self.screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
             pygame.display.flip()
