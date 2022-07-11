@@ -42,8 +42,8 @@ class Game():
         self.player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
 
         self.player = pygame.transform.scale(self.player, (150, 150)) # resize player
-        self.light=pygame.transform.scale(self.light, (800,800)) # resize gradient
-        self.candlelight=pygame.transform.scale(self.candlelight, (500,500))
+        self.light=pygame.transform.scale(self.light, (900,900)) # resize gradient
+        self.candlelight=pygame.transform.scale(self.candlelight, (600,600))
         self.bg = pygame.transform.scale(self.bg, (self.screenHeight,self.screenWidth))
 
         self.night = True # boolean to set if it is night or day
@@ -171,11 +171,11 @@ class Game():
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
 
-            self.screen.blit(self.display_equation, (600, 150))
+            self.screen.blit(self.display_equation, (900, 200))
             self.screen.blit(self.x, (245 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.y, (1000 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.z, (625 * self.widthScalar, 300 * self.heightScalar))
-            self.screen.blit(self.scored, (800 * self.widthScalar, 500 * self.heightScalar))
+            self.screen.blit(self.scored, (730 * self.widthScalar, 200 * self.heightScalar))
         
 
             if self.night: # if light effect needed
@@ -184,7 +184,7 @@ class Game():
                 filter.blit(self.light,(380 * self.widthScalar, -100 * self.heightScalar))
                 filter.blit(self.candlelight,(600 * self.widthScalar, 160* self.heightScalar))
                 filter.blit(self.candlelight,(640 * self.widthScalar, 160* self.heightScalar))
-                filter.blit(self.light,(self.pos[0]-367,self.pos[1]-364)) # blit light to the filter surface -400 is to center effect
+                filter.blit(self.light,(self.pos[0]-450,self.pos[1]-450)) # blit light to the filter surface -400 is to center effect
                 self.screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
             pygame.display.flip()
