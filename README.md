@@ -12,7 +12,7 @@ Language: Python
 Libraries: Pygame, Sys, os, ctypes, turtle, threading, random
 
 # Collaborators
-Tyler Sparks, James Rigby, Camden Miller, Joseph Miller, Gabe Morring, 
+Tyler Sparks, James Rigby, Camden Miller, Joseph Wilson, Gabe Morring, 
 
 # Useful Websites
 {Make a list of websites that you found helpful in this project}
