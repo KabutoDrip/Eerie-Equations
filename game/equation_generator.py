@@ -172,7 +172,7 @@ def fake_answer1(answer):
   f_answer1 = answer + add
   return f_answer1
 def fake_answer2(answer, prev=False):
-  #this fake anwser is generated so that it dosn't match the first one or the anwser
+  #this fake anwser is generated so that it dosn't match the first one or the real anwser
   if prev == False:
     return fake_answer1(answer)
   else:
