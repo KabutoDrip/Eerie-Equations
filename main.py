@@ -35,7 +35,10 @@ class Game():
         self.bg = pygame.image.load('assets\images\hall.png')
         #self.flashlight = pygame.image.load('assets\images\flashlight.png') #flashlight sprite at bottom of screen
      
-    
+        #the scale of the game screen.
+        #720 and 1280 is the height and width of the original screen this game was tested on.
+        #finding what the current screen's scale is compared to the original allows the game
+        #to fluidly adjust it's size depending on the user's screen.
         self.heightScalar = self.screenWidth/720
         self.widthScalar = self.screenHeight/1280
        
