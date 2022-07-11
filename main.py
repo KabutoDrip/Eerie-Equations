@@ -7,7 +7,7 @@ import os
 import ctypes
 import random
 from game import equation_generator
-
+pygame.init()
 # Adds the music library from pygame.
 from pygame import mixer
 
@@ -56,13 +56,14 @@ class Game():
         # Create the display surface object of the specific dimention.
         # Added variable for the text style (text through GUI).
         self.font = pygame.font.Font("assets/fonts/BloodLust.ttf", 50) # ("font", text size)
+        self.score = 0
 
 
     def game_loop(self):
 
         self.currentEquation, self.answer = equation_generator.main()
         self.fakeanswer = equation_generator.fake_answer1(self.answer)
-        self.fakeanswer2 = equation_generator.fake_answer2(self.answer)
+        self.fakeanswer2 = equation_generator.fake_answer2(self.answer, self.fakeanswer)
 
          # Create a text surface object, on which text is drawn on it.
         # it was...text = pygame.font.render(currentEquation, True, black, white)
@@ -73,23 +74,33 @@ class Game():
         self.textRect = self.text.get_rect()
 
         # Pass a string to myFond.render.
+
+        correct_position = random.randint(1,3)
+        print(correct_position)
+
         self.display_equation = self.font.render(str(self.currentEquation), True, self.red)
-        self.x = self.font.render(str(self.answer), True, self.red)
-        self.y = self.font.render(str(self.fakeanswer), True, self.red)
-        self.z = self.font.render(str(self.fakeanswer2), True, self.red)
+        if correct_position == 1:
+            self.x = self.font.render(str(self.answer), True, self.red)
+            self.y = self.font.render(str(self.fakeanswer), True, self.red)
+            self.z = self.font.render(str(self.fakeanswer2), True, self.red)
+        elif correct_position == 3:
+            self.x = self.font.render(str(self.fakeanswer), True, self.red)
+            self.y = self.font.render(str(self.answer), True, self.red)
+            self.z = self.font.render(str(self.fakeanswer2), True, self.red)
+        elif correct_position == 2:
+            self.x = self.font.render(str(self.fakeanswer), True, self.red)
+            self.y = self.font.render(str(self.fakeanswer2), True, self.red)
+            self.z = self.font.render(str(self.answer), True, self.red)
 
         loop = True
         selected = 0
-        correct_position = 1
         lives = 2
         chosen = set()
-
         while loop == True:
 
             for e in pygame.event.get():
                 if e.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
-                    print(pos)
                     if pos[0] in range(int(200*self.widthScalar),int((315*self.widthScalar))):
                         if pos[1] in range(int(200*self.widthScalar),int((525*self.widthScalar))):
                             print(1)
@@ -105,14 +116,25 @@ class Game():
                     else:
                         selected = 0
                     if selected == correct_position:
+                        if len(chosen) == 0:
+                            self.score += 100
+                            print(self.score)
+
+                        elif len(chosen) == 1:
+                            self.score += 50
+                            print(self.score)
+
+                        
                         loop = False
                         self.game_loop()
+
                     elif selected != 0:
                         if selected != correct_position:
                             if selected not in chosen:
                                 chosen.add(selected)
                                 lives -= 1
                             else:
+                                chosen.add(selected)
                                 pass
                         if lives == 0:
                             loop = False
@@ -130,7 +152,6 @@ class Game():
                 pygame.mouse.set_visible(True)
                 self.pos = []
                 self.pos = pygame.mouse.get_pos() # get mouse position
-
         # Make screen blit funcitons to run things above.
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
@@ -149,7 +170,6 @@ class Game():
                 self.screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
             pygame.display.flip()
-
 
     #screen.blit(player,torch_pos) # blit the player over the effect
     #pygame.display.flip()
