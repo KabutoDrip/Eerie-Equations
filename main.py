@@ -1,6 +1,4 @@
-from threading import currentThread
-from tkinter import Button
-from turtle import width
+
 import pygame
 import sys
 import os
@@ -16,7 +14,7 @@ class Game():
     ##############################################
     # Constructor/Initializer function for setup
     ##############################################
-    
+
     def __init__(self):
         # Calls the music file and plays during the game.
         mixer.init()
@@ -43,7 +41,6 @@ class Game():
         self.widthScalar = self.screenHeight/1280
        
         self.player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
-        self.life = pygame.transform.scale(self.life, (25,25))
         self.player = pygame.transform.scale(self.player, (150, 150)) # resize player
         self.light=pygame.transform.scale(self.light, (900,900)) # resize gradient
         self.candlelight=pygame.transform.scale(self.candlelight, (600,600))
@@ -211,7 +208,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-    
-
