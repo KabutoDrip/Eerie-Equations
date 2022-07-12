@@ -1,6 +1,6 @@
 # Overview
 
-## MinerMath Pygame
+## Eerie Equations Pygame
 
 ![Image](assets\images\Mansion.jpg)
 
@@ -8,7 +8,7 @@
 
 Here is our YouTube Video that goes over the presentation. 
 
-YouTube video link: [MinerMath Walkthrough/Demo](http://youtube.link.goes.here)
+YouTube video link: [Eerie Equations Walkthrough/Demo](http://youtube.link.goes.here)
 
 # Development Environment
 

@@ -1,6 +1,4 @@
-from threading import currentThread
-from tkinter import Button
-from turtle import width
+
 import pygame
 import sys
 import os
@@ -11,30 +9,29 @@ pygame.init()
 # Adds the music library from pygame.
 from pygame import mixer
 
-
 class Game():
-    def __init__(self):
 
+    ##############################################
+    # Constructor/Initializer function for setup
+    ##############################################
+
+    def __init__(self):
         # Calls the music file and plays during the game.
         mixer.init()
         mixer.music.load('assets/music/Scary_Music_1.mp3')
         mixer.music.set_volume(.5)
         mixer.music.play()
 
-        
-        #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
+        #Set display window settings
         self.user32 = ctypes.windll.user32
         self.screenHeight = self.user32.GetSystemMetrics(0)
         self.screenWidth = self.user32.GetSystemMetrics(1)
         self.screen=pygame.display.set_mode((self.screenHeight,self.screenWidth))
-        
-        # ANSWER_LIST = [self.answer, self.fakeanswer, self.fakeanswer2]
 
-        self.life = pygame.image.load('assets/heart_sprite.png')
+        #Sprites/Images
         self.light=pygame.image.load('assets\images\white.png') # radial gradient used for light pattern
         self.candlelight = pygame.image.load('assets\images\yellow_light.png')
         self.bg = pygame.image.load('assets\images\hall.png')
-        #self.flashlight = pygame.image.load('assets\images\flashlight.png') #flashlight sprite at bottom of screen
      
         #the scale of the game screen.
         #720 and 1280 is the height and width of the original screen this game was tested on.
@@ -44,7 +41,6 @@ class Game():
         self.widthScalar = self.screenHeight/1280
        
         self.player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
-        self.life = pygame.transform.scale(self.life, (25,25))
         self.player = pygame.transform.scale(self.player, (150, 150)) # resize player
         self.light=pygame.transform.scale(self.light, (900,900)) # resize gradient
         self.candlelight=pygame.transform.scale(self.candlelight, (600,600))
@@ -52,22 +48,27 @@ class Game():
 
         self.night = True # boolean to set if it is night or day
 
-        
         pygame.init()
 
-        # This is the RGB value for the colors.
+        #RGB value for the colors.
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
         self.red = (153,19,9)
+
         # Create the display surface object of the specific dimention.
         # Added variable for the text style (text through GUI).
         self.font = pygame.font.Font("assets/fonts/BloodLust.ttf", 50) # ("font", text size)
         self.score = 0
         self.life = 3
 
+    ##########################################################################
+    # Game loop is in charge of making sure the game continues after an answer 
+    # is selected, and keep track of score and lives
+    # Once life reach zero, game will end.
+    ##########################################################################
 
     def game_loop(self):
-
+        #Set the equation given, correct answer, and two wrong answers.
         self.currentEquation, self.answer = equation_generator.main()
         self.fakeanswer = equation_generator.fake_answer1(self.answer)
         self.fakeanswer2 = equation_generator.fake_answer2(self.answer, self.fakeanswer)
@@ -113,7 +114,7 @@ class Game():
         wrong_sound = pygame.mixer.Sound("assets/music/Wrong_Answer.mp3")
         pygame.mixer.Sound.set_volume(wrong_sound,1)
 
-
+        #Game loop
         while loop == True:
 
             for e in pygame.event.get():
@@ -142,11 +143,9 @@ class Game():
                             print(self.score)
                             pygame.mixer.Sound.play(correct_sound)
 
-
                         elif len(chosen) == 1:
                             self.score += 50
                             print(self.score)
-
                         
                         loop = False
                         self.game_loop()
@@ -177,7 +176,8 @@ class Game():
                 pygame.mouse.set_visible(True)
                 self.pos = []
                 self.pos = pygame.mouse.get_pos() # get mouse position
-        # Make screen blit funcitons to run things above.
+
+            # Make screen blit funcitons to run things above.
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
 
@@ -199,13 +199,12 @@ class Game():
 
             pygame.display.flip()
 
+#############################
+# Main driver function
+#############################
 def main():
     game = Game()
     game.game_loop()
 
 if __name__ == "__main__":
     main()
-
-
-    
-
