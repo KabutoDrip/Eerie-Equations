@@ -29,7 +29,7 @@ class Game():
         
         # ANSWER_LIST = [self.answer, self.fakeanswer, self.fakeanswer2]
 
-
+        self.life = pygame.image.load('assets/heart_sprite.png')
         self.light=pygame.image.load('assets\images\white.png') # radial gradient used for light pattern
         self.candlelight = pygame.image.load('assets\images\yellow_light.png')
         self.bg = pygame.image.load('assets\images\hall.png')
@@ -43,7 +43,7 @@ class Game():
         self.widthScalar = self.screenHeight/1280
        
         self.player = pygame.image.load(os.path.join('assets/torch.gif')).convert_alpha(); # load in player image, convert_alpha will keep transparent background
-
+        self.life = pygame.transform.scale(self.life, (25,25))
         self.player = pygame.transform.scale(self.player, (150, 150)) # resize player
         self.light=pygame.transform.scale(self.light, (900,900)) # resize gradient
         self.candlelight=pygame.transform.scale(self.candlelight, (600,600))
@@ -62,6 +62,7 @@ class Game():
         # Added variable for the text style (text through GUI).
         self.font = pygame.font.Font("assets/fonts/BloodLust.ttf", 50) # ("font", text size)
         self.score = 0
+        self.life = 3
 
 
     def game_loop(self):
@@ -98,6 +99,7 @@ class Game():
             self.z = self.font.render(str(self.answer), True, self.red)
 
         self.scored = self.font.render("Score: " + str(self.score), True, self.red)
+        self.life_display = self.font.render("Lives: " + str(self.life), True, self.red)
         loop = True
         selected = 0
         guesses = 2
@@ -156,6 +158,7 @@ class Game():
                                 pass
                         if guesses == 0:
                             loop = False
+                            self.life -= 1
                             self.game_loop()
 
                 if e.type == pygame.KEYDOWN:
@@ -174,12 +177,12 @@ class Game():
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
 
-            self.screen.blit(self.display_equation, (900, 200))
+            self.screen.blit(self.display_equation, (600 * self.widthScalar ,  133 * self.heightScalar))
             self.screen.blit(self.x, (245 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.y, (1000 * self.widthScalar, 400 * self.heightScalar))
             self.screen.blit(self.z, (625 * self.widthScalar, 300 * self.heightScalar))
             self.screen.blit(self.scored, (730 * self.widthScalar, 200 * self.heightScalar))
-        
+            self.screen.blit(self.life_display, (730 * self.widthScalar, 175 * self.heightScalar))
 
             if self.night: # if light effect needed
                 filter = pygame.surface.Surface((self.screenHeight, self.screenWidth)) # create surface same size as window
@@ -191,15 +194,6 @@ class Game():
                 self.screen.blit(filter, (0, 0), special_flags=pygame.BLEND_RGBA_MIN) # blit filter surface but with a blend
 
             pygame.display.flip()
-
-    #screen.blit(player,torch_pos) # blit the player over the effect
-    #pygame.display.flip()
-    
-    # def lives_lost(answer):
-    #     if answer == False:
-            
-class Player():
-    pass
 
 def main():
     game = Game()
