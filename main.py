@@ -12,14 +12,15 @@ pygame.init()
 from pygame import mixer
 
 
-
 class Game():
     def __init__(self):
 
         # Calls the music file and plays during the game.
         mixer.init()
         mixer.music.load('assets/music/Scary_Music_1.mp3')
+        mixer.music.set_volume(.5)
         mixer.music.play()
+
         
         #print(self.currentEquation,   self.answer,   self.fakeanswer,   self.fakeanswer2)
         self.user32 = ctypes.windll.user32
@@ -107,7 +108,11 @@ class Game():
 
         # Created variables for the correct and wrong answers when selecting a door.
         correct_sound = pygame.mixer.Sound("assets/music/Correct_Answer.mp3")
+        pygame.mixer.Sound.set_volume(correct_sound,1)
+
         wrong_sound = pygame.mixer.Sound("assets/music/Wrong_Answer.mp3")
+        pygame.mixer.Sound.set_volume(wrong_sound,1)
+
 
         while loop == True:
 
@@ -149,7 +154,6 @@ class Game():
                     elif selected != 0:
                         if selected != correct_position:
                             pygame.mixer.Sound.play(wrong_sound)
-
                             if selected not in chosen:
                                 chosen.add(selected)
                                 guesses -= 1
