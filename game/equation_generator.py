@@ -3,7 +3,7 @@ assigns variable values, returns equations and solutions to generated problem'''
 import random
 
 def main():
-  tier = 1 #variable pulled from game based off score, affects problem difficulty
+  tier = random.randint(1,4) #variable pulled from game based off score, affects problem difficulty
   var1,var2,var3,var4 = variable_maker(tier) #random variables are created based on the tier
   equation, anwser= (format_picker(tier,var1,var2,var3,var4)) #the variable are then used to make an equation and the anwser is calculated.
   return equation, anwser
