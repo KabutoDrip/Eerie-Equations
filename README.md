@@ -36,5 +36,5 @@ Libraries: Pygame, Sys, os, ctypes, turtle, threading, random
 * Start Screen
 * Game Over Screen
 * Scaling difficulty instead of choosing a variable static difficulty
-*Screen fade in and out after each answer
-*New Scenes as game progresses
+* Screen fade in and out after each answer
+* New Scenes as game progresses
