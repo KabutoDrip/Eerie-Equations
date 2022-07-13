@@ -33,6 +33,8 @@ Libraries: Pygame, Sys, os, ctypes, turtle, threading, random
 
 # Future Work
 {Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Start Screen
+* Game Over Screen
+* Scaling difficulty instead of choosing a variable static difficulty
+*Screen fade in and out after each answer
+*New Scenes as game progresses
