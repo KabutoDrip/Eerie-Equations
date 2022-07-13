@@ -133,7 +133,6 @@ class Game():
                     elif pos[0] in range(int(970*self.widthScalar),int((1100*self.widthScalar))):
                         if pos[1] in range(int(190*self.widthScalar),int((530*self.widthScalar))):
                             print(3)
-
                             selected = 3
                     else:
                         selected = 0
@@ -146,7 +145,6 @@ class Game():
                         elif len(chosen) == 1:
                             self.score += 50
                             print(self.score)
-                        
                         loop = False
                         self.game_loop()
 
@@ -176,7 +174,9 @@ class Game():
                 pygame.mouse.set_visible(True)
                 self.pos = []
                 self.pos = pygame.mouse.get_pos() # get mouse position
-
+            if self.life == 0:
+                pygame.quit()
+                
             # Make screen blit funcitons to run things above.
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
