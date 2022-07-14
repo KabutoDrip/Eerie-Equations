@@ -29,7 +29,6 @@ Libraries: Pygame, Sys, os, ctypes, turtle, threading, random
 
 
 # Future Work
-
 * Start Screen
 * Game Over Screen
 * Scaling difficulty instead of choosing a variable static difficulty
