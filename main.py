@@ -1,11 +1,10 @@
-
 import pygame
 import sys
 import os
 import ctypes
 import random
 from game import equation_generator
-pygame.init()
+
 # Adds the music library from pygame.
 from pygame import mixer
 
@@ -174,9 +173,11 @@ class Game():
                 pygame.mouse.set_visible(True)
                 self.pos = []
                 self.pos = pygame.mouse.get_pos() # get mouse position
+            
+            #Cue game ending with lives reaching zero.
             if self.life == 0:
                 pygame.quit()
-                
+
             # Make screen blit funcitons to run things above.
             self.screen.fill(pygame.color.Color('Black')) # just a background
             self.screen.blit(self.bg,(0,0))
