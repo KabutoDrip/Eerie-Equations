@@ -2,9 +2,7 @@
 
 ## Eerie Equations Pygame
 
-![Image](assets\images\Mansion.jpg)
-
-> Our team created a educational math game that has 5 tiers of difficulty. Setting is in a haunted house that the user selects a door with answer on it. If you loose all 3 lives, it's GAME OVER!!
+> Our team created a educational math game that has 5 tiers of difficulty. Setting is in a haunted house that the user selects a door with answer on it. If you lose all 3 lives, it's GAME OVER!!
 
 Here is our YouTube Video that goes over the presentation. 
 
